@@ -17,17 +17,29 @@ const collectionName = "washing-machines-collection";
 
 const PORT = 3000;
 
-async function getAllWaschingMachines() {
-  await client.connect();
-  console.log("Connected successfully to server");
-  const db = client.db(dbName);
-  const collection = db.collection(collectionName);
 
+let db;
+let collection;
+
+client
+  .connect()
+  .then((client) => {
+    db = client.db(dbName);
+    collection = db.collection(collectionName);
+
+    app.listen(PORT, () => {
+      console.log(`Server is listening on port ${PORT}`);
+    });
+  })
+  .catch((error) => console.error(error));
+
+async function getAllWaschingMachines() {
   const allMachines = await collection.find({}).toArray();
 
   return allMachines;
 }
-app.get("/washing-machines", async (req, res) => {
+
+app.get("/washing-machines", async (_, res) => {
   const washingMachines = await getAllWaschingMachines();
 
   res.send({ data: washingMachines });
