@@ -10,5 +10,5 @@ npm install
 npm run dev &
 cd ../fe
 npm install
-npm run dev &
+npm run dev
 ```
