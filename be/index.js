@@ -17,7 +17,6 @@ const collectionName = "washing-machines-collection";
 
 const PORT = 3000;
 
-
 let db;
 let collection;
 
@@ -45,6 +44,3 @@ app.get("/washing-machines", async (_, res) => {
   res.send({ data: washingMachines });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
