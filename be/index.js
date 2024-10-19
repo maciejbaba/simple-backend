@@ -10,8 +10,7 @@ app.use(express.json());
 app.use(cors())
 
 // normally this secure string would be hidden in the .env file but for showing the project I left it here so that it works out of the box
-// const dbUrl = process.env.MONGODB_URL;
-const dbUrl = "mongodb+srv://cheil_test:EPZg3yqgjjaxMu5u@ecommercestoredb.iyczwot.mongodb.net/?retryWrites=true&w=majority&appName=ecommerceStoreDB"
+const dbUrl = process.env.MONGODB_URL;
 const client = new MongoClient(dbUrl);
 
 const dbName = "washing-machines-db";
